@@ -1,0 +1,20 @@
+{% extends 'stark/layout.html' %}
+{% load staticfiles %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form_input.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <h1>删除页面</h1>
+    <div class="col-md-offset-4 col-md-3">
+        <h3>确定要删除吗？</h3>
+        <form method="post" >
+            {% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="确定">
+        </form>
+    </div>
+{% endblock %}
+
+

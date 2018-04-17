@@ -1,0 +1,28 @@
+{% extends 'stark/layout.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form_input.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>单条数据录入</h1>
+    <form class="form-horizontal" method="post" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{ field.label }}:</label>
+            <div class="col-sm-4">
+                <div class="field">{{ field }}</div>
+
+                <div class="error">
+                    {{ field.errors.0 }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="col-md-offset-5">
+        <input type="submit" class="btn btn-success" value="提交">
+    </div>
+</form>
+{% endblock %}
+

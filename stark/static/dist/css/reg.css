@@ -1,0 +1,27 @@
+
+
+
+.container{
+    margin-top: 80px;
+}
+
+
+.avatar{
+    position: relative;
+    width: 60px;
+    height: 60px;
+
+}
+
+#file_choose{
+    opacity: 0;
+}
+.solid{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    margin-left: 80px;
+}
+

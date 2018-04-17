@@ -1,0 +1,15 @@
+{% extends 'stark/layout.html' %}
+{% load  staticfiles %}
+{% block content %}
+    <h1>多条数据录用</h1>
+    <form class="col-md-offset-3" method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        <h3><a href="{% url 'stark:crm_customer_down' %}">点击下载模板文件</a></h3>
+
+        <div class="form-group " style="margin-top: 50px">
+            <label for="exfile">根据上边的模板，上传文件</label>
+            <input type="file" id="exfile" name="exfile">
+        </div>
+        <button type="submit" class="btn btn-primary">上传</button>
+    </form>
+{% endblock %}

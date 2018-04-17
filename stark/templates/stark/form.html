@@ -1,0 +1,36 @@
+<form class="form-horizontal" method="post" novalidate>
+    {% csrf_token %}
+    {% for item in form %}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{ item.bfield.label }}:</label>
+            <div class="col-sm-4">
+                <div class="field">{{ item.bfield }}</div>
+                {% if item.is_popup %}
+                    <div class="popup">
+                        <a class="glyphicon glyphicon-plus" onclick="popUp('{{ item.popup_url }}')"></a>
+                    </div>
+                {% endif %}
+                <div class="error">
+                    {{ item.bfield.errors.0 }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="col-md-offset-5">
+        <input type="submit" class="btn btn-success" value="提交">
+    </div>
+</form>
+<script>
+    function popupCallback(dic) {
+        if (dic.status){
+            var op = document.createElement('option');
+            op.value = dic.id;
+            op.text = dic.text;
+            op.setAttribute('selected','selected');
+            document.getElementById(dic.popbackid).appendChild(op);
+        }
+    }
+    function popUp(url) {
+        var popupPage = window.open(url, url, "status=1, height:500, width:600, toolbar=0, resizeable=0");
+    }
+</script>

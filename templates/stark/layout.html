@@ -1,0 +1,47 @@
+{% load staticfiles %}
+{% load rbac %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'rbac/rbac.css' %}">
+    <script src="{% static 'js/jquery-3.1.1.js' %}"></script>
+
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<div class="nav">
+    <div class="col-md-3 Logo ">CRM系统</div>
+    <div class="col-md-9 Mune">
+        <div class="MuneLeft pull-left">
+            <a href="#">平台首页</a>
+            <a href="#">资产首页</a>
+        </div>
+        <div class="MuneRight pull-right">
+            <a href="">任务 <span class="badge danger">4</span></a>
+            <a href="">通知 <span class="badge success">2</span></a>
+            <a href="">消息 <span class="badge success">3</span></a>
+            <a href=""><img src="{% static 'img/default.png' %}" alt="..." class="img-circle"></a>
+        </div>
+    </div>
+</div>
+
+<div class="content row">
+    <div class="col-md-3" style="background-color: #ffff33">
+       {% menu_html request %}
+    </div>
+
+    <div class="col-md-9">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+<script src="{% static 'rbac/rbac.js' %}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

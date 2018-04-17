@@ -1,0 +1,22 @@
+{% extends 'stark/layout.html' %}
+{% block content %}
+    <h1>公共客户资源</h1>
+    <table class="table table-bordered">
+        <thead>
+        <th>ID</th>
+        <th>QQ</th>
+        <th>姓名</th>
+        <th>抢单</th>
+        </thead>
+        <tbody>
+        {% for customer in customer_list %}
+            <tr>
+                <td>{{ customer.pk }}</td>
+                <td>{{ customer.qq }}</td>
+                <td>{{ customer.name }}</td>
+                <td><a href="/stark/crm/customer/{{ customer.pk }}/competition">抢单</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

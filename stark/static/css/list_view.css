@@ -1,0 +1,19 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+#Form_find{
+    padding: 0;
+    margin-bottom: 10px;
+}
+.active{
+    background-color: #b2dba1;
+}
+.comb_filter  a{
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #337ab7;
+}
+.comb_filter{
+    height: 35px;
+}

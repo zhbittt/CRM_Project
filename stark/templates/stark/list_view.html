@@ -1,0 +1,64 @@
+{% extends 'stark/layout.html' %}
+{% load  staticfiles %}
+{% load my_tags %}
+
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/list_view.css' %}">
+{% endblock %}
+
+{% block content %}
+             <h1>列表页面</h1>
+
+    {% if changelist.config.get_show_comb_filter %}
+       {% for item in changelist.gen_comb_filter %}
+        <div class="comb_filter">
+        {% for row in item %}
+            {{ row }}
+        {% endfor %}
+        </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if changelist.config.get_show_add_btn %}
+        <div class="col-md-offset-11  text-right"><a href="{{ changelist.add_url }}">
+            <button type="button" class="btn btn-primary">添加</button>
+        </a></div>
+    {% endif %}
+
+    {% if changelist.config.show_query_field %}
+        <form method="get" class="col-md-3 form-inline" id="Form_find">
+            <div class="form-group">
+                <input type="text" name="q" class="form-control" placeholder="请输入查询条件" aria-describedby="find_btn">
+                <button type="submit" class="btn btn-primary" id="find_btn"><span
+                        class="glyphicon glyphicon-search"></span></button>
+            </div>
+        </form>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% if changelist.config.get_show_actions %}
+            <div class="form-group">
+                <select name="list_action" class="form-control" style="display:inline-block;width: 200px;">
+                    {% for item in changelist.modify_actions %}
+                        <option value="{{ item.name }}">{{ item.text }}</option>
+                    {% endfor %}
+
+                </select>
+                <button class="btn btn-primary">执行</button>
+            </div>
+        {% endif %}
+        {% show_list data_list=changelist.data_list header_list=changelist.header_data %}
+    </form>
+
+
+    <nav aria-label="Page navigation" class="text-center">
+        <ul class="pagination">
+            {% for page_html in changelist.pager_obj.page_html %}
+                {{ page_html|safe }}
+            {% endfor %}
+        </ul>
+    </nav>
+{% endblock %}
+

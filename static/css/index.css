@@ -1,0 +1,130 @@
+body{
+        overflow-x: hidden;
+    overflow-y: scroll;
+}
+.Logo{
+    height: 50px;
+    line-height: 50px;
+    background-color:#2B668F ;
+    font-size: 35px;
+    font-family: 微软雅黑;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+}
+.Mune{
+    height: 50px;
+    line-height: 50px;
+    background-color:#337ab7 ;
+    font-size: 16px;
+    font-family: 微软雅黑;
+    font-weight: normal;
+}
+.Mune a{
+    color: white;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.MuneLeft{
+
+}
+.danger{
+ background-color: #d9534f;
+}
+.success{
+    background-color: #5cb85c;
+}
+.questionnaireList{
+    margin-top: 10px;
+}
+.content{
+    margin-top: 10px;
+
+}
+.questionList{
+
+}
+/*.question{*/
+  /*width: 100%;*/
+
+/*}*/
+/*.question_head{*/
+    /*height: 30px;*/
+    /*line-height: 30px;*/
+    /*position: relative;*/
+
+/*}*/
+
+
+.question_close{
+    position: absolute;
+    top: 3px;
+    right: 7px;
+}
+.BtnMune{
+    position: relative;
+    height: 35px;
+    line-height: 35px;
+}
+.Btn_add{
+    position: absolute;
+    top: 0px;
+    right:60px;
+}
+.Btn_save{
+    position: absolute;
+    top: 0px;
+    right:0px;
+}
+.Textarea{
+  resize: none;
+}
+
+.option_add{
+    line-height: 30px;
+}
+.option_add a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+.option{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.option .form-group{
+    margin-left: 15px;
+}
+.incenter{
+    line-height: 35px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+/*ul{*/
+    /*padding-left: 15px;*/
+/*}*/
+.questionList ol {
+    padding: 0;
+    list-style: none;
+    counter-reset: sectioncounter
+}
+.questionList ol > li{
+    border: solid 1px #cccccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    position: relative;
+}
+.questionList ol > li:before {
+    content: '问题' counter(sectioncounter) ':';
+    counter-increment: sectioncounter;
+    font-family: 微软雅黑;
+    font-size: 15px;
+    color: #d4d4d4;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+.questionList ol > li:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}

@@ -1,0 +1,22 @@
+{% extends 'stark/layout.html' %}
+{% load staticfiles %}
+
+{% block content %}
+        <h1>当前登录用户的所有客户</h1>
+        <table class="table table-bordered">
+            <thead>
+                <th>客户名</th>
+                <th>状态</th>
+                <th>更多信息</th>
+            </thead>
+            <tbody>
+                {% for customer in customer_list %}
+                    <tr>
+                        <td>{{ customer.customer }}</td>
+                        <td>{{ customer.get_status_display }}</td>
+                        <td>{{ customer.memo }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

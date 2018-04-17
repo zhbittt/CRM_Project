@@ -1,0 +1,93 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    <script src="{% static 'js/jquery-3.1.1.js' %}"></script>
+    <script src="{% static 'dist/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <form method="post" novalidate>
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                      </div>
+                      <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                      </div>
+
+                      <div class="row validCode">
+                          <div class="col-md-6">
+                               <div class="form-group">
+                                <label for="validCode">验证码</label>
+                                <input type="text" class="form-control validCode_text" id="validCode" name="validCode" placeholder="validCode">
+                              </div>
+                          </div>
+
+                          <div class="col-md-6">
+                              <img class="validCode_img" src="/get_validCode_img/" alt="" width="200px" height="50px">
+                          </div>
+                      </div>
+                    <input type="submit" value="登录" class="btn btn-primary" id="subBtn"><span class="error">{{ msg }}</span>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+
+{#<script>#}
+{##}
+{#   $("#subBtn").click(function () {#}
+{##}
+{#       $.ajax({#}
+{#           url:"/login/",#}
+{#           type:"POST",#}
+{#           data:{#}
+{#               "username":$("#username").val(),#}
+{#               "password":$("#password").val(),#}
+{#               "validCode":$("#validCode").val(),#}
+{#               "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val(),#}
+{#           },#}
+{#           success:function (data) {#}
+{#               console.log(data);#}
+{##}
+{#               var response=JSON.parse(data);#}
+{#               if (response["is_login"]){#}
+{#                   location.href="/index/"#}
+{#               }#}
+{#               else {#}
+{#                    $(".error").html(response["error_msg"]).css("color","red")#}
+{#               }#}
+{#           }#}
+{#       })#}
+{##}
+{##}
+{##}
+{#   })#}
+{##}
+{##}
+{#    // 验证码刷新#}
+{#    $(".validCode_img").click(function () {#}
+{#        $(this)[0].src+="?"#}
+{##}
+{#    })#}
+{#</script>#}
+
+
+
+</body>
+</html>
